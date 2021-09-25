@@ -2,6 +2,7 @@ package actions
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"team_manager/models"
 
@@ -24,14 +25,14 @@ func (v MembersResource) List(c buffalo.Context) error {
 		return fmt.Errorf("no transaction found")
 	}
 
-	members := &models.Members{}
+	members := models.Members{}
 
 	// Paginate results. Params "page" and "per_page" control pagination.
 	// Default values are "page=1" and "per_page=20".
 	q := tx.PaginateFromParams(c.Params())
 
 	// Retrieve all Members from the DB
-	if err := q.All(members); err != nil {
+	if err := q.All(&members); err != nil {
 		return err
 	}
 
@@ -82,6 +83,8 @@ func (v MembersResource) Create(c buffalo.Context) error {
 	if !ok {
 		return fmt.Errorf("no transaction found")
 	}
+
+	log.Printf("%+v", member)
 
 	// Validate the data from the request
 	verrs, err := tx.ValidateAndCreate(member)
@@ -167,8 +170,8 @@ func (v MembersResource) Destroy(c buffalo.Context) error {
 	}
 
 	return responder.Wants("json", func(c buffalo.Context) error {
-		return c.Render(http.StatusNoContent, r.JSON(nil))
+		return c.Render(http.StatusNoContent, nil)
 	}).Wants("xml", func(c buffalo.Context) error {
-		return c.Render(http.StatusNoContent, r.XML(nil))
+		return c.Render(http.StatusNoContent, nil)
 	}).Respond(c)
 }
