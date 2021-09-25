@@ -1,3 +1,19 @@
+# Team Manager
+
+RESTful API that will help you manage your team. You can create a member (employee or contractor) and attach a tag to him.
+
+## Development
+
+If you use VSCode you get started easily using the extension [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+
+Or you can start the project manually running the `docker-compose.yml`:
+
+```
+docker-compose -f .devcontainer/docker-compose.yml up -d
+```
+
+You can use the application on [http://127.0.0.1:3000](http://127.0.0.1:3000).
+
 ## Instructions
 
 The goal of this exercise is to create a demo RESTful application using Golang.
