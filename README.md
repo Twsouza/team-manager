@@ -26,6 +26,20 @@ swag init --parseDependency --parseInternal -g actions/app.go
 
 Run the application, then open the documentation on http://localhost:3000/v1/doc/index.html. All endpoint are available for test.
 
+## How to deploy
+
+Follow the steps to [install the heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+Set the stack to container:
+
+```
+heroku stack:set container
+```
+
+To deploy the application, push the modification to the Heroku git repository.
+
+# Project
+
 ## Instructions
 
 The goal of this exercise is to create a demo RESTful application using Golang.
