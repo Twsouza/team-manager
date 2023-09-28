@@ -1,34 +1,39 @@
-## Instructions
+# Team Manager
 
-The goal of this exercise is to create a demo RESTful application using Golang.
+RESTful API that will help you manage your team. You can create a member (employee or contractor) and attach a tag to him.
 
-### The Task
+## Development
 
-In this task, we are building the backend of a team application that helps us manage the resources in each project.
+If you use VSCode you get started easily using the extension [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
-#### Features and Requirements
+Or you can start the project manually running the `docker-compose.yml`:
 
-1. A resource will be either a contractor or an employee.
-2. A resource can have a few different tags like C#, Angular, General Frontend, Seasoned Leader and so on.
-3. A resource has a role, for instance: Software Engineer, Project Manager and so on
-4. We should be able to use the same tag for multiple resources
+```
+docker-compose -f .devcontainer/docker-compose.yml up -d
+```
 
-We need to offer endpoints that allow us to add/remove/update all the information related.
+You can use the application on [http://127.0.0.1:3000](http://127.0.0.1:3000).
 
-#### Notes:
+### Swagger
 
-1. You can use any Golang framework
-2. Make sure to provide a tutorial on how to run your application
-3. Feel free to use any database
+When changes are made, you have to init the docs by running the following command on the terminal:
 
-#### Bonus points:
+```
+swag init --parseDependency --parseInternal -g actions/app.go
+```
 
-1. You add automated tests
-2. You provide a Docker image
-3. You hosted your solution in a server or free host like heroky
-4. Your solution is using any CI/CD service
+## How to use the application
 
-#### Delivery:
+Run the application, then open the documentation on http://localhost:3000/v1/doc/index.html. All endpoint are available for test.
 
-Please create branch and a merge request on this repository
+## How to deploy
 
+Follow the steps to [install the heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+Set the stack to container:
+
+```
+heroku stack:set container
+```
+
+To deploy the application, push the modification to the Heroku git repository.
